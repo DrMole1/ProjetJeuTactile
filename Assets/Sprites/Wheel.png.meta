@@ -17,6 +17,24 @@ TextureImporter:
   - first:
       213: -6156699580501575248
     second: Wheel_4
+  - first:
+      213: -4823437932984719742
+    second: Wheel_5
+  - first:
+      213: -7811923505024301759
+    second: Wheel_6
+  - first:
+      213: -3646125926440243863
+    second: Wheel_7
+  - first:
+      213: 3146826185123955137
+    second: Wheel_8
+  - first:
+      213: 7340470739445930271
+    second: Wheel_9
+  - first:
+      213: 2494389802326835697
+    second: Wheel_10
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -122,7 +140,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 28
-        y: 13
+        y: 513
         width: 160
         height: 153
       alignment: 0
@@ -143,7 +161,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 232
-        y: 15
+        y: 515
         width: 156
         height: 153
       alignment: 0
@@ -164,7 +182,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 432
-        y: 11
+        y: 511
         width: 160
         height: 153
       alignment: 0
@@ -185,7 +203,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 630
-        y: 15
+        y: 515
         width: 154
         height: 155
       alignment: 0
@@ -206,7 +224,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 842
-        y: 18
+        y: 518
         width: 154
         height: 155
       alignment: 0
@@ -218,6 +236,132 @@ TextureImporter:
       bones: []
       spriteID: 0b93863e9520f8aa0800000000000000
       internalID: -6156699580501575248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wheel_5
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 319
+        width: 154
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2862d4071c4bf0db0800000000000000
+      internalID: -4823437932984719742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wheel_6
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 320
+        width: 154
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 145808626f8769390800000000000000
+      internalID: -7811923505024301759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wheel_7
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 317
+        width: 153
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96def24b9cb566dc0800000000000000
+      internalID: -3646125926440243863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wheel_8
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 321
+        width: 160
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c106362eb5cbab20800000000000000
+      internalID: 3146826185123955137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wheel_9
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 324
+        width: 160
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f19d2dcfe379ed560800000000000000
+      internalID: 7340470739445930271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wheel_10
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 122
+        width: 161
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f14c033f4add9220800000000000000
+      internalID: 2494389802326835697
       vertices: []
       indices: 
       edges: []

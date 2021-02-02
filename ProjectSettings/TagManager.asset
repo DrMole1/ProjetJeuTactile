@@ -9,6 +9,7 @@ TagManager:
   - Blue
   - Pink
   - Orange
+  - Supra
   layers:
   - Default
   - TransparentFX
@@ -17,11 +18,11 @@ TagManager:
   - Water
   - UI
   - Lollipop
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Berlingot
+  - SpittedLollipop
+  - AugmentedLollipop
+  - SupraLollipop
+  - SpittedSupra
   - 
   - 
   - 
