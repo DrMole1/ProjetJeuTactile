@@ -23,13 +23,13 @@ public class Berlingot : MonoBehaviour
             ptcExplosion = Instantiate(ptcExplosionPrefab, transform.position, Quaternion.identity);
             Destroy(ptcExplosion, 4f);
 
-            eatLollipop = GameObject.Find("Grimlod").GetComponent<EatLollipop>();
+            eatLollipop = GameObject.Find("Gummy").GetComponent<EatLollipop>();
             eatLollipop.TouchBerlingot();
 
             Destroy(gameObject);
         }
 
-        if (other.gameObject.layer == 9 && other.gameObject.tag == gameObject.tag)
+        if (other.gameObject.layer == 12 && other.gameObject.tag == gameObject.tag)
         {
             GameObject.Find("Palette").GetComponent<Palette>().Check();
 
@@ -37,7 +37,7 @@ public class Berlingot : MonoBehaviour
             ptcExplosion = Instantiate(ptcExplosionPrefab, transform.position, Quaternion.identity);
             Destroy(ptcExplosion, 4f);
 
-            eatLollipop = GameObject.Find("Grimlod").GetComponent<EatLollipop>();
+            eatLollipop = GameObject.Find("Gummy").GetComponent<EatLollipop>();
             eatLollipop.TouchBerlingot();
 
             Destroy(gameObject);
@@ -51,7 +51,7 @@ public class Berlingot : MonoBehaviour
             ptcExplosion = Instantiate(ptcExplosionPrefab, transform.position, Quaternion.identity);
             Destroy(ptcExplosion, 4f);
 
-            eatLollipop = GameObject.Find("Grimlod").GetComponent<EatLollipop>();
+            eatLollipop = GameObject.Find("Gummy").GetComponent<EatLollipop>();
             eatLollipop.TouchBerlingot();
 
             Destroy(gameObject);

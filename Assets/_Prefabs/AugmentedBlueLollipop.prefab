@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4275758728988063526}
   - component: {fileID: 4275758728988063523}
   - component: {fileID: 4052721667857418164}
+  - component: {fileID: 3127918560057316180}
   m_Layer: 9
   m_Name: AugmentedBlueLollipop
   m_TagString: Blue
@@ -145,3 +146,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
+--- !u!114 &3127918560057316180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4275758728988063527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a89ead0aada878c4c98aca33becdc148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoneLaserPrefab: {fileID: 3235911777454549013, guid: 1614e0b559fb3414d9ece0a99d4a0699, type: 3}

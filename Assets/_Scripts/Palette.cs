@@ -49,6 +49,17 @@ public class Palette : MonoBehaviour
                 nCandy++;
             }
         }
+
+        for(int k = 0; k < transform.childCount; k++)
+        {
+            transform.GetChild(k).gameObject.SetActive(false);
+            transform.GetChild(k).localScale = new Vector3(0.07f, 0.07f, 1f);
+        }
+    }
+
+    private void Start()
+    {
+        StartCoroutine(ShowAllCandies());
     }
 
     public int CalculateMaxPlaces(int _step)
@@ -87,13 +98,13 @@ public class Palette : MonoBehaviour
         if(stepIsEmpty && stop == false)
         {
             StartCoroutine(GoNextStep());
+            print(actualStep);
             stop = true;
         }
     }
 
     IEnumerator GoNextStep()
     {
-        print("next step");
         delay = 0;
 
         while (delay < MAXDELAY)
@@ -108,5 +119,33 @@ public class Palette : MonoBehaviour
         stop = false;
 
         //Check();
+    }
+
+    IEnumerator ShowAllCandies()
+    {
+        for (int k = 0; k < transform.childCount; k++)
+        {
+            transform.GetChild(k).gameObject.SetActive(true);
+            StartCoroutine(GrowCandy(transform.GetChild(k)));
+
+            yield return new WaitForSeconds(0.02f);
+        }
+    }
+
+    IEnumerator GrowCandy(Transform tr)
+    {
+        while(tr.localScale.x < 0.1f)
+        {
+            tr.localScale = new Vector3(tr.localScale.x + 0.0045f, tr.localScale.y + 0.0045f, 1f);
+
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        while (tr.localScale.x > 0.092f)
+        {
+            tr.localScale = new Vector3(tr.localScale.x - 0.0045f, tr.localScale.y - 0.0045f, 1f);
+
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }

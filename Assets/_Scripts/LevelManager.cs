@@ -13,9 +13,14 @@ public class LevelManager : MonoBehaviour
     private const float MOVE = 0.06f;
 
     // ============== VARIABLES ==============
-    [Header("Parameters to Manage")]
     public float scoreToReach = 0;
     public int maxItems = 0;
+
+    [Header("Parameters to Manage")]
+    public GameObject[] palettes;
+    public float[] scoresToReach;
+    public int[] maxItemsGame;
+    public int[] colors;
 
     [Header("Objects to Drop")]
     public TextMeshProUGUI txtScore;
@@ -25,8 +30,10 @@ public class LevelManager : MonoBehaviour
     public RectTransform goldCandy2;
     public RectTransform goldCandy3;
     public Transform palette;
+    public LollipopSpawner lollipopSpawner;
+    public TextMeshProUGUI txtRemainingItems;
 
-    private int actualScore = 0;
+    public int actualScore = 0;
     private bool isTextGrowing = false;
     private bool isBarGrowing = false;
     private bool isGoldCandy1 = false;
@@ -36,9 +43,31 @@ public class LevelManager : MonoBehaviour
     private float rot = 0;
     private Vector3 currentRot;
     private Quaternion currentQuaternionRot;
+    private int level = 0;
 
     // =======================================
 
+
+    public void Awake()
+    {
+        level = PlayerPrefs.GetInt("ActualLevel", 0);
+
+        GameObject Palette;
+        Palette = Instantiate(palettes[level], new Vector3(0, 0, 0), Quaternion.identity);
+        Palette.name = "Palette";
+
+        scoreToReach = scoresToReach[level];
+
+        maxItems = maxItemsGame[level];
+        txtRemainingItems.text = "X" + maxItems.ToString();
+
+        lollipopSpawner.nColor = colors[level];
+    }
+
+    public void Start()
+    {
+        palette = GameObject.Find("Palette").transform;
+    }
 
     public void AddScore(int _scoreToAdd)
     {

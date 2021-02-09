@@ -186,6 +186,6 @@ public class OptionParameters : MonoBehaviour
 
     public void Jouer()
     {
-        SceneManager.LoadScene("SelectionLevel", LoadSceneMode.Single);
+        SceneManager.LoadScene("MenuSelectionLevels", LoadSceneMode.Single);
     }
 }

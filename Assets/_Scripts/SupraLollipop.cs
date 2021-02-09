@@ -34,7 +34,7 @@ public class SupraLollipop : MonoBehaviour
         ptcExplosion.transform.SetParent(null);
         Destroy(ptcExplosion, 7f);
 
-        transform.localScale = new Vector3(1.5f, 1.5f, 1);
+        transform.localScale = new Vector3(2.25f, 2.25f, 1);
 
         GameObject.Find("LevelManager").GetComponent<LevelManager>().EarthQuake();
 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2568951749100937666}
   - component: {fileID: 2568951749100937671}
   - component: {fileID: 2363935756582900048}
+  - component: {fileID: -8876528457423456381}
   m_Layer: 9
   m_Name: AugmentedGreenLollipop
   m_TagString: Green
@@ -145,3 +146,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: -1.5
+--- !u!114 &-8876528457423456381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2568951749100937667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a89ead0aada878c4c98aca33becdc148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoneLaserPrefab: {fileID: 6928078636823465657, guid: 22708ce642b959143b9a5a77cf708e7c, type: 3}

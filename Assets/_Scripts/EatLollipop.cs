@@ -30,8 +30,9 @@ public class EatLollipop : MonoBehaviour
     public Sprite[] augmentedItems;
     public TextMeshProUGUI txtRemainingItems;
     public GameObject[] bonusLollipops;
+    public EndConditions endConditions;
 
-    private bool hasEaten = false;
+    public bool hasEaten = false;
     private Vector3 fingerPos;
     private Vector3 realWorldPos;
     private int color;
@@ -146,13 +147,18 @@ public class EatLollipop : MonoBehaviour
 
     private void Update()
     {
+        if(endConditions.isFinished)
+        {
+            return;
+        }
+
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
             fingerPos = Input.GetTouch(0).position;
             fingerPos.z = 8;
             realWorldPos = Camera.main.ScreenToWorldPoint(fingerPos);
 
-            if(realWorldPos.y > -2f && realWorldPos.y < 4f)
+            if(realWorldPos.y > -2f && realWorldPos.y < 5f)
             {
                 Spit();
             }
@@ -227,6 +233,8 @@ public class EatLollipop : MonoBehaviour
 
         GameObject ptcScore;
 
+        endConditions.CheckWinCondition();
+
         if(actualCombo == 1)
         {
             ptcScore = Instantiate(ptcScorePrefab[0], spittedlollipop.transform.position, Quaternion.identity);
@@ -300,14 +308,19 @@ public class EatLollipop : MonoBehaviour
         {
             yield return new WaitForSeconds(0.01f);
 
-            txtRemainingItems.fontSize++;
+            txtRemainingItems.fontSize += 4;
         }
 
         while (txtRemainingItems.fontSize > FONTSIZE)
         {
             yield return new WaitForSeconds(0.015f);
 
-            txtRemainingItems.fontSize--;
+            txtRemainingItems.fontSize -= 4;
+        }
+
+        if(levelManager.maxItems == 0)
+        {
+            endConditions.CheckLoseCondition();
         }
     }
 
@@ -342,12 +355,18 @@ public class EatLollipop : MonoBehaviour
 
         rb.gravityScale = 1f;
         dir = (realWorldPos - tr.position).normalized;
+
+        spittedlollipop.layer = 12;
         rb.AddForce(dir * 600);
 
-        if(color == 5)
+        if (color == 5)
         {
             spittedlollipop.layer = 11;
             spittedlollipop.GetComponent<SupraLollipop>().StartToExplode();
+        }
+        else
+        {
+            spittedlollipop.GetComponent<AugmentedLollipop>().StartToExplode();
         }
 
         StartCoroutine(UpdateRemainingItems());
