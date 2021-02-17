@@ -23,6 +23,7 @@ public class OptionParameters : MonoBehaviour
     public RectTransform btnSound;
     public RectTransform btnMusic;
     public RectTransform btnQuitLevel;
+    public SoundManager soundManager;
 
     [Header("Sprites")]
     public Sprite soundOn;
@@ -44,6 +45,13 @@ public class OptionParameters : MonoBehaviour
             audioSource.volume = 0;
             soundImage.overrideSprite = soundOff;
         }
+
+        if (PlayerPrefs.GetInt("Music", 1) == 0)
+        {
+            isMusic = false;
+            GameObject.Find("MusicManager").GetComponent<AudioSource>().volume = 0;
+            musicImage.overrideSprite = musicOff;
+        }
     }
 
     public void ShowMenu()
@@ -58,6 +66,7 @@ public class OptionParameters : MonoBehaviour
             return;
         }
 
+        soundManager.playAudioClip(9);
         menu.SetActive(true);
         menuIsOpen = true;
 
@@ -76,6 +85,7 @@ public class OptionParameters : MonoBehaviour
             return;
         }
 
+        soundManager.playAudioClip(10);
         StartCoroutine(UpMenu());
     }
 
@@ -83,6 +93,7 @@ public class OptionParameters : MonoBehaviour
     {
         if(isSound)
         {
+            soundManager.playAudioClip(8);
             isSound = false;
             audioSource.volume = 0;
             soundImage.overrideSprite = soundOff;
@@ -90,10 +101,31 @@ public class OptionParameters : MonoBehaviour
         }
         else
         {
+            soundManager.playAudioClip(7);
             isSound = true;
             audioSource.volume = 1;
             soundImage.overrideSprite = soundOn;
             PlayerPrefs.SetInt("Sound", 1);
+        }
+    }
+
+    public void UpdateMusic()
+    {
+        if (isMusic)
+        {
+            soundManager.playAudioClip(8);
+            isMusic = false;
+            GameObject.Find("MusicManager").GetComponent<AudioSource>().volume = 0;
+            musicImage.overrideSprite = musicOff;
+            PlayerPrefs.SetInt("Music", 0);
+        }
+        else
+        {
+            soundManager.playAudioClip(7);
+            isMusic = true;
+            GameObject.Find("MusicManager").GetComponent<AudioSource>().volume = 0.6f;
+            musicImage.overrideSprite = musicOn;
+            PlayerPrefs.SetInt("Music", 1);
         }
     }
 
@@ -181,11 +213,13 @@ public class OptionParameters : MonoBehaviour
 
     public void Quitter()
     {
+        soundManager.playAudioClip(5);
         Application.Quit();
     }
 
     public void Jouer()
     {
+        soundManager.playAudioClip(6);
         SceneManager.LoadScene("MenuSelectionLevels", LoadSceneMode.Single);
     }
 }

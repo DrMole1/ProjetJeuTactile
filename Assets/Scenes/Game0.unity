@@ -3971,6 +3971,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a60251a64da1eee4d907db72f0fcca28, type: 3}
   - {fileID: 8300000, guid: 21b235f0be048184fb68da0a106f813b, type: 3}
   - {fileID: 8300000, guid: f92f3ae3c592d5e4fa0a1ccbdec02906, type: 3}
+  - {fileID: 8300000, guid: 2aa4f40e30e815e43a2be6f5b80f0edc, type: 3}
+  - {fileID: 8300000, guid: c03dfb8a36be72c4aaf5870659dd78f6, type: 3}
+  - {fileID: 8300000, guid: a848106569152c34586ad717c391d736, type: 3}
+  - {fileID: 8300000, guid: b04fe7782ac178040b43ef19044bf25d, type: 3}
+  - {fileID: 8300000, guid: 78d3bafe92e03ce43b2f8bc7edaea8f3, type: 3}
+  - {fileID: 8300000, guid: 8e25c1881a004bc48a7cd399e194647f, type: 3}
+  - {fileID: 8300000, guid: 20ca429127fdbd945a0bf5c525ad8c9f, type: 3}
+  - {fileID: 8300000, guid: 421a97568e4dce244bac326e6c657692, type: 3}
+  - {fileID: 8300000, guid: 6816bd41cecfb654ab0c1fe33956bd73, type: 3}
+  - {fileID: 8300000, guid: 0f70f9c6f3ba3c946866b04825a0f220, type: 3}
+  - {fileID: 8300000, guid: 042c7f43aebd1874986e29d255ac6c55, type: 3}
 --- !u!4 &1099469742
 Transform:
   m_ObjectHideFlags: 0
@@ -4645,6 +4656,7 @@ MonoBehaviour:
   - {fileID: 1619225953604498650, guid: ce3e6406c192c6f4891e5feae10dcb8c, type: 3}
   delayToSpawn: 5
   nColor: 3
+  inMenu: 0
 --- !u!1 &1248633964
 GameObject:
   m_ObjectHideFlags: 0
@@ -6569,28 +6581,48 @@ MonoBehaviour:
   maxItems: 0
   palettes:
   - {fileID: 9081515958040508624, guid: ec4da026a9a2eaa4986c177459aff188, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7729130199713854141, guid: 183355740ea506844a932557f6d7d5f5, type: 3}
+  - {fileID: 6258077187491737389, guid: 5c4034c45798a594e887d3aa381b2cce, type: 3}
+  - {fileID: 8738669434530980637, guid: bafddb089d0451547ba1f804eca088aa, type: 3}
+  - {fileID: 4724444309206175311, guid: 2553e1c5fc77e3b4c97566f577bfa86f, type: 3}
+  - {fileID: 6713710091411401879, guid: 75f7eb540ec53ce4c844a75c6a7a0aa2, type: 3}
+  - {fileID: 2347623613660678862, guid: cc914e9b1b6c2cd4ead52b37dd086a5d, type: 3}
+  - {fileID: 2398079236922212950, guid: 63fb64c0a2189c24791a82654579db40, type: 3}
+  - {fileID: 3161093961261695768, guid: 2a54fee82488cff4fbaa25aff9b1c9fb, type: 3}
+  - {fileID: 2789202949850526521, guid: 1e43cb0588fe88d4da83e94889526954, type: 3}
+  - {fileID: 8633501430244447448, guid: d3952865e81a33b4f94c44b6837b3b5f, type: 3}
+  - {fileID: 7699537877730438291, guid: 268d15b621d50ba4892bd7806b34b18e, type: 3}
+  - {fileID: 3163770779268748315, guid: eabcb5731adb2964e897002bdf4da6e4, type: 3}
+  - {fileID: 5477478547058954728, guid: 770def15581f3f941a126fd05d59c01f, type: 3}
+  - {fileID: 1603511232034619738, guid: ded76fe7a34d0784fb832a4790215c88, type: 3}
+  - {fileID: 2917802674527338518, guid: 02eae673304ce3b4d8e7fbc3ca84a1d9, type: 3}
+  - {fileID: 7983578801964028960, guid: 85925d2e038a1e3459557aa2fe413ee1, type: 3}
+  - {fileID: 621321969448618238, guid: 96a1a46acf1c60f4cb7c1b4aa927d0fe, type: 3}
+  - {fileID: 8148514528847933844, guid: ce5a12a69bb188f4eb74e96b66a744cc, type: 3}
+  - {fileID: 3097473256828793052, guid: 206a81b422e2960428934964377a7290, type: 3}
   scoresToReach:
   - 10000
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  maxItemsGame: 19000000000000000000000000000000000000000000000000000000000000000000000000000000
-  colors: 02000000000000000000000000000000000000000000000000000000000000000000000000000000
+  - 13000
+  - 15000
+  - 15000
+  - 15000
+  - 15000
+  - 15000
+  - 15000
+  - 15000
+  - 15000
+  - 15000
+  - 30000
+  - 30000
+  - 30000
+  - 30000
+  - 30000
+  - 30000
+  - 30000
+  - 30000
+  - 30000
+  maxItemsGame: 1400000019000000190000001900000019000000190000001900000019000000190000001900000019000000190000001900000019000000190000001900000019000000190000001900000019000000
+  colors: 0200000002000000020000000300000002000000030000000300000002000000030000000300000002000000020000000300000003000000040000000300000003000000020000000300000004000000
   txtScore: {fileID: 1602828825}
   scoreBar: {fileID: 352294212}
   fillBar: {fileID: 889579722}
@@ -6600,6 +6632,7 @@ MonoBehaviour:
   palette: {fileID: 0}
   lollipopSpawner: {fileID: 1245050102}
   txtRemainingItems: {fileID: 1470994024}
+  soundManager: {fileID: 1099469741}
   actualScore: 0
 --- !u!114 &1802443184
 MonoBehaviour:
@@ -6621,6 +6654,7 @@ MonoBehaviour:
   btnSound: {fileID: 1952618798}
   btnMusic: {fileID: 1994646126}
   btnQuitLevel: {fileID: 265186284}
+  soundManager: {fileID: 1099469741}
   soundOn: {fileID: 7182263647903576031, guid: deba23d46fa534b47a795413fd22fe80, type: 3}
   soundOff: {fileID: 6638128627169588098, guid: deba23d46fa534b47a795413fd22fe80, type: 3}
   musicOn: {fileID: 1230217771611361323, guid: deba23d46fa534b47a795413fd22fe80, type: 3}
@@ -6665,6 +6699,7 @@ MonoBehaviour:
   lollipopSpawner: {fileID: 1245050099}
   levelManager: {fileID: 1802443183}
   txtRemainingItems: {fileID: 1470994024}
+  soundManager: {fileID: 1099469741}
   ptcRedPrefab: {fileID: 5452559766115821190, guid: 28363a513ca6b9e47802dd1718ce7a52, type: 3}
   ptcBluePrefab: {fileID: 5405405765560833409, guid: 099a01bba5daf54428b14c8d418b6f52, type: 3}
   ptcGreenPrefab: {fileID: 1491490728868941170, guid: 7515c13b38dccf64a8b925374a9d34ea, type: 3}
@@ -6680,6 +6715,7 @@ MonoBehaviour:
   goldCandy2: {fileID: 720197689}
   goldCandy3: {fileID: 1197013550}
   txtScore: {fileID: 1402815703}
+  txtLevel: {fileID: 309816825}
   isFinished: 0
 --- !u!114 &1802443187
 MonoBehaviour:
@@ -7100,7 +7136,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1994646128}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1802443184}
+        m_TargetAssemblyTypeName: OptionParameters, Assembly-CSharp
+        m_MethodName: UpdateMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1994646128
 MonoBehaviour:
   m_ObjectHideFlags: 0

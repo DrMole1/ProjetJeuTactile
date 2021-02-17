@@ -30,6 +30,7 @@ public class EndConditions : MonoBehaviour
     public GameObject lollipopSpawner;
     public LevelManager levelManager;
     public TextMeshProUGUI txtRemainingItems;
+    public SoundManager soundManager;
 
     [Header("Prefabs")]
     public GameObject ptcRedPrefab;
@@ -49,6 +50,7 @@ public class EndConditions : MonoBehaviour
     public RectTransform goldCandy2;
     public RectTransform goldCandy3;
     public TextMeshProUGUI txtScore;
+    public TextMeshProUGUI txtLevel;
 
 
     public bool isFinished = false;
@@ -62,6 +64,7 @@ public class EndConditions : MonoBehaviour
     private float rot = 0;
     private Vector3 currentRot;
     private Quaternion currentQuaternionRot;
+    private int nGoldCandy = 0;
 
     // =======================================
 
@@ -306,7 +309,11 @@ public class EndConditions : MonoBehaviour
 
     IEnumerator ShowEndPannel()
     {
+        txtLevel.text = "Niveau " + (PlayerPrefs.GetInt("ActualLevel", 0) + 1).ToString();
+
         endPannel.gameObject.SetActive(true);
+
+        soundManager.playAudioClip(9);
 
         while (endPannel.localScale.x < 1f)
         {
@@ -357,6 +364,16 @@ public class EndConditions : MonoBehaviour
             PlayerPrefs.SetInt("MaxLevel", PlayerPrefs.GetInt("MaxLevel", 0) + 1);
         }
 
+        int level = PlayerPrefs.GetInt("ActualLevel", 0);
+        string ppName = "GoldCandy" + level.ToString();
+
+        if (PlayerPrefs.GetInt(ppName, 0) < nGoldCandy)
+        {
+            PlayerPrefs.SetInt(ppName, nGoldCandy);
+        }
+
+        soundManager.playAudioClip(5);
+
         SceneManager.LoadScene("MenuSelectionLevels", LoadSceneMode.Single);
     }
 
@@ -371,6 +388,8 @@ public class EndConditions : MonoBehaviour
             goldCandy1.gameObject.SetActive(true);
             isGoldCandy1 = true;
             StartCoroutine(GrowGoldCandy(goldCandy1));
+            nGoldCandy++;
+            soundManager.playAudioClip(13);
         }
 
         if (isGoldCandy2 == false && _width >= 200)
@@ -378,6 +397,8 @@ public class EndConditions : MonoBehaviour
             goldCandy2.gameObject.SetActive(true);
             isGoldCandy2 = true;
             StartCoroutine(GrowGoldCandy(goldCandy2));
+            nGoldCandy++;
+            soundManager.playAudioClip(13);
         }
 
         if (isGoldCandy3 == false && _width >= 300)
@@ -385,6 +406,8 @@ public class EndConditions : MonoBehaviour
             goldCandy3.gameObject.SetActive(true);
             isGoldCandy3 = true;
             StartCoroutine(GrowGoldCandy(goldCandy3));
+            nGoldCandy++;
+            soundManager.playAudioClip(13);
         }
 
         if (fillBar.GetComponent<RectTransform>().rect.width < _width)
@@ -399,14 +422,14 @@ public class EndConditions : MonoBehaviour
         {
             yield return new WaitForSeconds(0.01f);
 
-            _rect.localScale = new Vector2(_rect.localScale.x + 0.05f, _rect.localScale.y + 0.05f);
+            _rect.localScale = new Vector2(_rect.localScale.x + 0.1f, _rect.localScale.y + 0.1f);
         }
 
         while (_rect.localScale.x > 1f)
         {
             yield return new WaitForSeconds(0.015f);
 
-            _rect.localScale = new Vector2(_rect.localScale.x - 0.05f, _rect.localScale.y - 0.05f);
+            _rect.localScale = new Vector2(_rect.localScale.x - 0.1f, _rect.localScale.y - 0.1f);
         }
 
         RectTransform _rect2 = _rect.transform.parent.GetComponent<RectTransform>();

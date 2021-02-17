@@ -12,6 +12,7 @@ public class SupraLollipop : MonoBehaviour
     public GameObject zoneSupraPrefab;
 
     private GameObject palette;
+    private SoundManager soundManager;
 
     // =======================================
 
@@ -19,6 +20,7 @@ public class SupraLollipop : MonoBehaviour
 
     public void StartToExplode()
     {
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         StartCoroutine(Explode());
     }
 
@@ -33,6 +35,9 @@ public class SupraLollipop : MonoBehaviour
 
         ptcExplosion.transform.SetParent(null);
         Destroy(ptcExplosion, 7f);
+
+        float pitch = UnityEngine.Random.Range(0.8f, 1.5f);
+        soundManager.playAudioClipWithPitch(11, pitch);
 
         transform.localScale = new Vector3(2.25f, 2.25f, 1);
 

@@ -32,6 +32,7 @@ public class LevelManager : MonoBehaviour
     public Transform palette;
     public LollipopSpawner lollipopSpawner;
     public TextMeshProUGUI txtRemainingItems;
+    public SoundManager soundManager;
 
     public int actualScore = 0;
     private bool isTextGrowing = false;
@@ -58,8 +59,7 @@ public class LevelManager : MonoBehaviour
 
         scoreToReach = scoresToReach[level];
 
-        maxItems = maxItemsGame[level];
-        txtRemainingItems.text = "X" + maxItems.ToString();
+        maxItems += maxItemsGame[level];
 
         lollipopSpawner.nColor = colors[level];
     }
@@ -67,6 +67,7 @@ public class LevelManager : MonoBehaviour
     public void Start()
     {
         palette = GameObject.Find("Palette").transform;
+        txtRemainingItems.text = "X" + maxItems.ToString();
     }
 
     public void AddScore(int _scoreToAdd)
@@ -94,6 +95,7 @@ public class LevelManager : MonoBehaviour
             goldCandy1.gameObject.SetActive(true);
             isGoldCandy1 = true;
             StartCoroutine(GrowGoldCandy(goldCandy1));
+            soundManager.playAudioClip(13);
         }
 
         if (isGoldCandy2 == false && actualScore >= scoreToReach / 3 * 2)
@@ -101,6 +103,7 @@ public class LevelManager : MonoBehaviour
             goldCandy2.gameObject.SetActive(true);
             isGoldCandy2 = true;
             StartCoroutine(GrowGoldCandy(goldCandy2));
+            soundManager.playAudioClip(13);
         }
 
         if (isGoldCandy3 == false && actualScore >= scoreToReach)
@@ -108,6 +111,7 @@ public class LevelManager : MonoBehaviour
             goldCandy3.gameObject.SetActive(true);
             isGoldCandy3 = true;
             StartCoroutine(GrowGoldCandy(goldCandy3));
+            soundManager.playAudioClip(13);
         }
     }
 

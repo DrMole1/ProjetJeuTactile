@@ -24,7 +24,7 @@ public class Berlingot : MonoBehaviour
             Destroy(ptcExplosion, 4f);
 
             eatLollipop = GameObject.Find("Gummy").GetComponent<EatLollipop>();
-            eatLollipop.TouchBerlingot();
+            eatLollipop.TouchBerlingotExplosif(transform.position);
 
             Destroy(gameObject);
         }
@@ -38,7 +38,7 @@ public class Berlingot : MonoBehaviour
             Destroy(ptcExplosion, 4f);
 
             eatLollipop = GameObject.Find("Gummy").GetComponent<EatLollipop>();
-            eatLollipop.TouchBerlingot();
+            eatLollipop.TouchBerlingotExplosif(transform.position);
 
             Destroy(gameObject);
         }
@@ -52,7 +52,7 @@ public class Berlingot : MonoBehaviour
             Destroy(ptcExplosion, 4f);
 
             eatLollipop = GameObject.Find("Gummy").GetComponent<EatLollipop>();
-            eatLollipop.TouchBerlingot();
+            eatLollipop.TouchBerlingotExplosif(transform.position);
 
             Destroy(gameObject);
         }

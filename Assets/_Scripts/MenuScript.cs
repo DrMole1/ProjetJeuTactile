@@ -21,6 +21,7 @@ public class MenuScript : MonoBehaviour
     public TextMeshProUGUI txtInfo;
     public Image imgInfo;
     public Sprite[] spriteInfos;
+    public SoundManager soundManager;
 
     private bool iconeReduceHeight = true;
     public bool menuIsOpen = false;
@@ -149,6 +150,8 @@ public class MenuScript : MonoBehaviour
         menu.SetActive(true);
         menuIsOpen = true;
 
+        soundManager.playAudioClip(9);
+
         StartCoroutine(DownMenu());
     }
 
@@ -163,6 +166,8 @@ public class MenuScript : MonoBehaviour
         {
             return;
         }
+
+        soundManager.playAudioClip(10);
 
         StartCoroutine(UpMenu());
     }
@@ -235,7 +240,9 @@ public class MenuScript : MonoBehaviour
     {
         slide++;
 
-        if(slide == 2)
+        soundManager.playAudioClip(6);
+
+        if (slide == 2)
         {
             txtInfo.text = "Touchez le haut de l'écran pour viser et tirer la sucette gobée. Explosez tous les bonbons de chaque niveau !";
             imgInfo.overrideSprite = spriteInfos[1];

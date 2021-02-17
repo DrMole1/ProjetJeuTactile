@@ -39,6 +39,8 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
 
     public Sprite[] spritesBonus;
 
+    public SoundManager soundManager;
+
     private int widthToReach = 0;
     private bool iconeReduceHeight1 = true;
     private bool iconeReduceHeight2 = true;
@@ -250,6 +252,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
             return;
         }
 
+        soundManager.playAudioClip(14);
         imgBonus1.overrideSprite = obtenirOff;
         fillBar1.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 60f);
         nBonus1 = 0;
@@ -274,6 +277,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
             return;
         }
 
+        soundManager.playAudioClip(14);
         imgBonus2.overrideSprite = obtenirOff;
         fillBar2.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 60f);
         nBonus2 = 0;
@@ -298,6 +302,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
             return;
         }
 
+        soundManager.playAudioClip(14);
         imgBonus3.overrideSprite = obtenirOff;
         fillBar3.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 60f);
         nBonus3 = 0;
@@ -323,6 +328,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
             return;
         }
 
+        soundManager.playAudioClip(14);
         imgBonus4.overrideSprite = obtenirOff;
         fillBar4.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 60f);
         nBonus4 = 0;

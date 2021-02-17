@@ -21,9 +21,6 @@ public class Palette : MonoBehaviour
 
     public CandyPalette[] candyPalette = new CandyPalette[255];
 
-    public float speed = 0.7f;
-
-    private int delay = 0;
     private bool stop = false;
 
     // =======================================
@@ -105,20 +102,24 @@ public class Palette : MonoBehaviour
 
     IEnumerator GoNextStep()
     {
-        delay = 0;
+        float initPosY = transform.position.y;
+        float nextPosY = initPosY - 0.75f;
 
-        while (delay < MAXDELAY)
+        while (transform.position.y > nextPosY)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, transform.position.y - 0.75f), speed * Time.deltaTime);
-            delay++;
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.05f, transform.position.z);
 
-            yield return null;
+            yield return new WaitForSeconds(0.01f);
         }
 
         actualStep++;
+        //stop = false;
+
+        yield return new WaitForSeconds(1f);
+
         stop = false;
 
-        //Check();
+        Check();
     }
 
     IEnumerator ShowAllCandies()
@@ -126,7 +127,11 @@ public class Palette : MonoBehaviour
         for (int k = 0; k < transform.childCount; k++)
         {
             transform.GetChild(k).gameObject.SetActive(true);
-            StartCoroutine(GrowCandy(transform.GetChild(k)));
+
+            if(transform.GetChild(k).gameObject.layer == 7)
+                StartCoroutine(GrowCandy(transform.GetChild(k)));
+            if (transform.GetChild(k).gameObject.layer == 13)
+                StartCoroutine(GrowCandyExplosive(transform.GetChild(k)));
 
             yield return new WaitForSeconds(0.02f);
         }
@@ -144,6 +149,23 @@ public class Palette : MonoBehaviour
         while (tr.localScale.x > 0.092f)
         {
             tr.localScale = new Vector3(tr.localScale.x - 0.0045f, tr.localScale.y - 0.0045f, 1f);
+
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    IEnumerator GrowCandyExplosive(Transform tr)
+    {
+        while (tr.localScale.x < 0.4f)
+        {
+            tr.localScale = new Vector3(tr.localScale.x + 0.085f, tr.localScale.y + 0.085f, 1f);
+
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        while (tr.localScale.x > 0.35f)
+        {
+            tr.localScale = new Vector3(tr.localScale.x - 0.085f, tr.localScale.y - 0.085f, 1f);
 
             yield return new WaitForSeconds(0.1f);
         }

@@ -47,6 +47,12 @@ public class EatLollipop : MonoBehaviour
 
 
 
+    private void Start()
+    {
+        StartMusic();
+    }
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.layer == 6 && hasEaten == false)
@@ -254,17 +260,15 @@ public class EatLollipop : MonoBehaviour
         {
             ptcScore = Instantiate(ptcScorePrefab[3], spittedlollipop.transform.position, Quaternion.identity);
             Destroy(ptcScore, 5f);
+
+            SpawnAugmentedLollipop();
         }
         else if (actualCombo >= 5)
         {
             ptcScore = Instantiate(ptcScorePrefab[4], spittedlollipop.transform.position, Quaternion.identity);
             Destroy(ptcScore, 5f);
 
-            if(actualCombo == 5)
-            {
-                SpawnAugmentedLollipop();
-            }
-            if (actualCombo == 10)
+            if (actualCombo == 8)
             {
                 SpawnSupraLollipop();
             }
@@ -372,5 +376,78 @@ public class EatLollipop : MonoBehaviour
         StartCoroutine(UpdateRemainingItems());
 
         StartCoroutine(DelayToStartEat());
+    }
+
+    public void StartMusic()
+    {
+        MusicManager musicManager;
+
+        if (GameObject.Find("MusicManager") != null)
+        {
+            musicManager = GameObject.Find("MusicManager").GetComponent<MusicManager>();
+            musicManager.PlayMusicGame();
+        }
+        else
+        {
+            print("No Music Manager found.");
+        }
+    }
+
+    public void TouchBerlingotExplosif(Vector3 _pos)
+    {
+        actualCombo++;
+
+        soundManager.playAudioClipWithPitch(4, 0.45f + 0.05f * actualCombo);
+
+        GameObject ptcScore;
+
+        endConditions.CheckWinCondition();
+
+        if (actualCombo == 1)
+        {
+            ptcScore = Instantiate(ptcScorePrefab[0], _pos, Quaternion.identity);
+            Destroy(ptcScore, 5f);
+        }
+        else if (actualCombo == 2)
+        {
+            ptcScore = Instantiate(ptcScorePrefab[1], _pos, Quaternion.identity);
+            Destroy(ptcScore, 5f);
+        }
+        else if (actualCombo == 3)
+        {
+            ptcScore = Instantiate(ptcScorePrefab[2], _pos, Quaternion.identity);
+            Destroy(ptcScore, 5f);
+        }
+        else if (actualCombo == 4)
+        {
+            ptcScore = Instantiate(ptcScorePrefab[3], _pos, Quaternion.identity);
+            Destroy(ptcScore, 5f);
+
+            if (color == 5)
+            {
+                return;
+            }
+
+            GameObject augmentedLollipop;
+            augmentedLollipop = Instantiate(bonusLollipops[color], _pos, Quaternion.identity);
+        }
+        else if (actualCombo >= 5)
+        {
+            ptcScore = Instantiate(ptcScorePrefab[4], _pos, Quaternion.identity);
+            Destroy(ptcScore, 5f);
+
+            if (actualCombo == 8)
+            {
+                if (color == 5)
+                {
+                    return;
+                }
+
+                GameObject supraLollipop;
+                supraLollipop = Instantiate(bonusLollipops[5], _pos, Quaternion.identity);
+            }
+        }
+
+        levelManager.AddScore(actualCombo * 100);
     }
 }

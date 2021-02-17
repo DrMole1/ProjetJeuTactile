@@ -10,12 +10,16 @@ public class AugmentedLollipop : MonoBehaviour
 
     public GameObject zoneLaserPrefab;
 
+    private SoundManager soundManager;
+
     // =======================================
 
 
 
     public void StartToExplode()
     {
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+
         StartCoroutine(Explode());
     }
 
@@ -25,6 +29,8 @@ public class AugmentedLollipop : MonoBehaviour
 
         GameObject zoneLaser;
         zoneLaser = Instantiate(zoneLaserPrefab, transform.position, Quaternion.identity);
+
+        soundManager.playAudioClip(12);
 
         yield return new WaitForSeconds(0.01f);
 

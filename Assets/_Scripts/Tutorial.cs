@@ -108,7 +108,7 @@ public class Tutorial : MonoBehaviour
     {
         float a = 0f;
 
-        while (a < 0.4f)
+        while (a < 0.8f)
         {
             sr.color = new Color(1f, 1f, 1f, a);
 
@@ -117,45 +117,7 @@ public class Tutorial : MonoBehaviour
             a += 0.1f;
         }
 
-        while (a > 0f)
-        {
-            sr.color = new Color(1f, 1f, 1f, a);
-
-            yield return new WaitForSeconds(0.1f);
-
-            a -= 0.1f;
-        }
-
-        a = 0f;
-
-        while (a < 0.4f)
-        {
-            sr.color = new Color(1f, 1f, 1f, a);
-
-            yield return new WaitForSeconds(0.1f);
-
-            a += 0.1f;
-        }
-
-        while (a > 0f)
-        {
-            sr.color = new Color(1f, 1f, 1f, a);
-
-            yield return new WaitForSeconds(0.1f);
-
-            a -= 0.1f;
-        }
-
-        a = 0f;
-
-        while (a < 0.4f)
-        {
-            sr.color = new Color(1f, 1f, 1f, a);
-
-            yield return new WaitForSeconds(0.1f);
-
-            a += 0.1f;
-        }
+        yield return new WaitForSeconds(1.5f);
 
         while (a > 0f)
         {
