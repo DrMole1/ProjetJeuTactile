@@ -99,6 +99,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ptcExplosionPrefab: {fileID: 5405405765560833409, guid: 099a01bba5daf54428b14c8d418b6f52, type: 3}
   eatLollipop: {fileID: 0}
+  ptcExplosions:
+  - {fileID: 5452559766115821190, guid: 28363a513ca6b9e47802dd1718ce7a52, type: 3}
+  - {fileID: 5405405765560833409, guid: 099a01bba5daf54428b14c8d418b6f52, type: 3}
+  - {fileID: 1491490728868941170, guid: 7515c13b38dccf64a8b925374a9d34ea, type: 3}
+  - {fileID: 7442166875265150461, guid: 41a456af4d8b38f4691854fc344ddce8, type: 3}
+  - {fileID: 8387792156474361343, guid: 12ca292bb1e29e040a534411d6ce52b3, type: 3}
+  sprites:
+  - {fileID: -3366272070310193754, guid: 8295003063a0ec44a97cd6a8eed5d267, type: 3}
+  - {fileID: -3032129168011833662, guid: 8295003063a0ec44a97cd6a8eed5d267, type: 3}
+  - {fileID: -2950404794562567556, guid: 8295003063a0ec44a97cd6a8eed5d267, type: 3}
+  - {fileID: 7839794291830354235, guid: 8295003063a0ec44a97cd6a8eed5d267, type: 3}
+  - {fileID: -6859763343790416647, guid: 8295003063a0ec44a97cd6a8eed5d267, type: 3}
 --- !u!50 &6893246015503540150
 Rigidbody2D:
   serializedVersion: 4

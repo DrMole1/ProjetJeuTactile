@@ -8,6 +8,8 @@ public class Berlingot : MonoBehaviour
 
     public GameObject ptcExplosionPrefab;
     public EatLollipop eatLollipop;
+    public GameObject[] ptcExplosions;
+    public Sprite[] sprites;
 
     // =======================================
 
@@ -55,6 +57,71 @@ public class Berlingot : MonoBehaviour
             eatLollipop.TouchBerlingotExplosif(transform.position);
 
             Destroy(gameObject);
+        }
+
+        if (other.gameObject.layer == 15 && other.gameObject.tag == "Red")
+        {
+            gameObject.tag = other.gameObject.tag;
+
+            GetComponent<SpriteRenderer>().sprite = sprites[0];
+
+            ptcExplosionPrefab = ptcExplosions[0];
+
+            GameObject ptcExplosion;
+            ptcExplosion = Instantiate(ptcExplosionPrefab, transform.position, Quaternion.identity);
+            Destroy(ptcExplosion, 4f);
+        }
+
+        if (other.gameObject.layer == 15 && other.gameObject.tag == "Blue")
+        {
+            gameObject.tag = other.gameObject.tag;
+
+            GetComponent<SpriteRenderer>().sprite = sprites[1];
+
+            ptcExplosionPrefab = ptcExplosions[1];
+
+            GameObject ptcExplosion;
+            ptcExplosion = Instantiate(ptcExplosionPrefab, transform.position, Quaternion.identity);
+            Destroy(ptcExplosion, 4f);
+        }
+
+        if (other.gameObject.layer == 15 && other.gameObject.tag == "Green")
+        {
+            gameObject.tag = other.gameObject.tag;
+
+            GetComponent<SpriteRenderer>().sprite = sprites[2];
+
+            ptcExplosionPrefab = ptcExplosions[2];
+
+            GameObject ptcExplosion;
+            ptcExplosion = Instantiate(ptcExplosionPrefab, transform.position, Quaternion.identity);
+            Destroy(ptcExplosion, 4f);
+        }
+
+        if (other.gameObject.layer == 15 && other.gameObject.tag == "Pink")
+        {
+            gameObject.tag = other.gameObject.tag;
+
+            GetComponent<SpriteRenderer>().sprite = sprites[3];
+
+            ptcExplosionPrefab = ptcExplosions[3];
+
+            GameObject ptcExplosion;
+            ptcExplosion = Instantiate(ptcExplosionPrefab, transform.position, Quaternion.identity);
+            Destroy(ptcExplosion, 4f);
+        }
+
+        if (other.gameObject.layer == 15 && other.gameObject.tag == "Orange")
+        {
+            gameObject.tag = other.gameObject.tag;
+
+            GetComponent<SpriteRenderer>().sprite = sprites[4];
+
+            ptcExplosionPrefab = ptcExplosions[4];
+
+            GameObject ptcExplosion;
+            ptcExplosion = Instantiate(ptcExplosionPrefab, transform.position, Quaternion.identity);
+            Destroy(ptcExplosion, 4f);
         }
     }
 }

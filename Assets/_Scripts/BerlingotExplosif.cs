@@ -12,9 +12,17 @@ public class BerlingotExplosif : MonoBehaviour
 
     [HideInInspector]public EatLollipop eatLollipop;
 
+    private float rot = 0;
+    private Vector3 currentRot;
+    private Quaternion currentQuaternionRot;
+
     // =======================================
 
 
+    private void Start()
+    {
+        StartCoroutine(Anim());
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -98,5 +106,61 @@ public class BerlingotExplosif : MonoBehaviour
             Destroy(gameObject);
             Destroy(other.gameObject);
         }
+    }
+
+    IEnumerator Anim()
+    {
+        float delay = 0f;
+        delay = UnityEngine.Random.Range(8f, 20f);
+
+        rot = 0;
+
+        yield return new WaitForSeconds(delay);
+
+        while (transform.localScale.x < 0.45f)
+        {
+            transform.localScale = new Vector3(transform.localScale.x + 0.085f, transform.localScale.y + 0.085f, 1f);
+
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        while (rot < 20)
+        {
+            yield return new WaitForSeconds(0.01f);
+
+            rot += 1;
+            currentRot = new Vector3(0, 0, rot);
+            currentQuaternionRot.eulerAngles = currentRot;
+            transform.localRotation = currentQuaternionRot;
+        }
+
+        while (rot > -20)
+        {
+            yield return new WaitForSeconds(0.01f);
+
+            rot -= 1;
+            currentRot = new Vector3(0, 0, rot);
+            currentQuaternionRot.eulerAngles = currentRot;
+            transform.localRotation = currentQuaternionRot;
+        }
+
+        while (rot < 0)
+        {
+            yield return new WaitForSeconds(0.01f);
+
+            rot += 1;
+            currentRot = new Vector3(0, 0, rot);
+            currentQuaternionRot.eulerAngles = currentRot;
+            transform.localRotation = currentQuaternionRot;
+        }
+
+        while (transform.localScale.x > 0.35f)
+        {
+            transform.localScale = new Vector3(transform.localScale.x - 0.085f, transform.localScale.y - 0.085f, 1f);
+
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        StartCoroutine(Anim());
     }
 }

@@ -51,6 +51,7 @@ public class LevelManager : MonoBehaviour
 
     public void Awake()
     {
+        //PlayerPrefs.SetInt("ActualLevel", 20);
         level = PlayerPrefs.GetInt("ActualLevel", 0);
 
         GameObject Palette;

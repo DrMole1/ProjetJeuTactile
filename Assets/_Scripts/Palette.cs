@@ -128,7 +128,7 @@ public class Palette : MonoBehaviour
         {
             transform.GetChild(k).gameObject.SetActive(true);
 
-            if(transform.GetChild(k).gameObject.layer == 7)
+            if(transform.GetChild(k).gameObject.layer == 7 || transform.GetChild(k).gameObject.layer == 14)
                 StartCoroutine(GrowCandy(transform.GetChild(k)));
             if (transform.GetChild(k).gameObject.layer == 13)
                 StartCoroutine(GrowCandyExplosive(transform.GetChild(k)));
@@ -156,7 +156,7 @@ public class Palette : MonoBehaviour
 
     IEnumerator GrowCandyExplosive(Transform tr)
     {
-        while (tr.localScale.x < 0.4f)
+        while (tr.localScale.x < 0.45f)
         {
             tr.localScale = new Vector3(tr.localScale.x + 0.085f, tr.localScale.y + 0.085f, 1f);
 

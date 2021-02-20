@@ -38,6 +38,7 @@ public class MenuSelectionScript : MonoBehaviour
     public RectTransform marquePage;
     public TextMeshProUGUI txtMarquePage;
     public Transform panneaux;
+    public RectTransform transitionPanel;
 
     private bool menuIsOnAnim = false;
     private RectTransform btnActualLevel;
@@ -312,7 +313,8 @@ public class MenuSelectionScript : MonoBehaviour
     public void Jouer()
     {
         soundManager.playAudioClip(6);
-        SceneManager.LoadScene("Game0", LoadSceneMode.Single);
+
+        StartCoroutine(ShowTransitionPanel());
     }
 
     public void Quitter()
@@ -536,5 +538,49 @@ public class MenuSelectionScript : MonoBehaviour
         {
             print("No Music Manager found.");
         }
+    }
+
+    IEnumerator ShowTransitionPanel()
+    {
+        transitionPanel.gameObject.SetActive(true);
+
+        while (transitionPanel.localScale.x < 24)
+        {
+            transitionPanel.localScale = new Vector2(transitionPanel.localScale.x + 1, transitionPanel.localScale.y + 1);
+
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        transitionPanel.GetChild(1).gameObject.SetActive(true);
+        transitionPanel.GetChild(2).gameObject.SetActive(true);
+
+        int count = 0;
+        float speed = 1;
+
+        while (count < 140)
+        {
+            for (int i = 0; i < transitionPanel.GetChild(1).childCount; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    speed = 1;
+                }
+                else
+                {
+                    speed = 1.4f;
+                }
+
+                transitionPanel.GetChild(1).GetChild(i).localPosition = new Vector3(transitionPanel.GetChild(1).GetChild(i).localPosition.x, transitionPanel.GetChild(1).GetChild(i).localPosition.y - speed, 0f);
+                transitionPanel.GetChild(2).GetChild(i).localPosition = new Vector3(transitionPanel.GetChild(2).GetChild(i).localPosition.x, transitionPanel.GetChild(2).GetChild(i).localPosition.y + speed, 0f);
+            }
+
+            yield return new WaitForSeconds(0.01f);
+
+            count++;
+        }
+
+        yield return new WaitForSeconds(0.4f);
+
+        SceneManager.LoadScene("Game0", LoadSceneMode.Single);
     }
 }

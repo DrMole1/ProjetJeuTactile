@@ -13,6 +13,7 @@ public class OptionParameters : MonoBehaviour
     [Header("Parameters")]
     public static bool isMusic = true;
     public static bool isSound = true;
+    public bool isFirstMenu = false;
 
     [Header("Objects to Drop")]
     public GameObject menu;
@@ -24,6 +25,7 @@ public class OptionParameters : MonoBehaviour
     public RectTransform btnMusic;
     public RectTransform btnQuitLevel;
     public SoundManager soundManager;
+    public RectTransform transitionPanel;
 
     [Header("Sprites")]
     public Sprite soundOn;
@@ -39,7 +41,12 @@ public class OptionParameters : MonoBehaviour
 
     private void Start()
     {
-        if(PlayerPrefs.GetInt("Sound", 1) == 0)
+        if(!isFirstMenu)
+            StartCoroutine(UnshowTransitionPanel());
+        else
+            transitionPanel.localScale = new Vector2(0, 0);
+
+        if (PlayerPrefs.GetInt("Sound", 1) == 0)
         {
             isSound = false;
             audioSource.volume = 0;
@@ -219,7 +226,67 @@ public class OptionParameters : MonoBehaviour
 
     public void Jouer()
     {
+        Time.timeScale = 1f;
         soundManager.playAudioClip(6);
+
+        StartCoroutine(ShowTransitionPanel());
+    }
+
+    IEnumerator UnshowTransitionPanel()
+    {
+        transitionPanel.gameObject.SetActive(true);
+
+        while(transitionPanel.localScale.x > 0)
+        {
+            transitionPanel.localScale = new Vector2(transitionPanel.localScale.x - 1, transitionPanel.localScale.y - 1);
+
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        transitionPanel.gameObject.SetActive(false);
+    }
+
+    IEnumerator ShowTransitionPanel()
+    {
+        transitionPanel.gameObject.SetActive(true);
+
+        while (transitionPanel.localScale.x < 30)
+        {
+            transitionPanel.localScale = new Vector2(transitionPanel.localScale.x + 1, transitionPanel.localScale.y + 1);
+
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        transitionPanel.GetChild(1).gameObject.SetActive(true);
+        transitionPanel.GetChild(2).gameObject.SetActive(true);
+
+        int count = 0;
+        float speed = 1;
+
+        while(count < 140)
+        {
+            for(int i = 0; i < transitionPanel.GetChild(1).childCount; i++)
+            {
+                if(i % 2 == 0)
+                {
+                    speed = 1;
+                }
+                else
+                {
+                    speed = 1.4f;
+                }
+
+                transitionPanel.GetChild(1).GetChild(i).localPosition = new Vector3(transitionPanel.GetChild(1).GetChild(i).localPosition.x, transitionPanel.GetChild(1).GetChild(i).localPosition.y - speed, 0f);
+                transitionPanel.GetChild(2).GetChild(i).localPosition = new Vector3(transitionPanel.GetChild(2).GetChild(i).localPosition.x, transitionPanel.GetChild(2).GetChild(i).localPosition.y + speed, 0f);
+            }
+
+            yield return new WaitForSeconds(0.01f);
+
+            count++;
+        }
+
+        yield return new WaitForSeconds(0.4f);
+
         SceneManager.LoadScene("MenuSelectionLevels", LoadSceneMode.Single);
     }
 }

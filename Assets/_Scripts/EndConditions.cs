@@ -31,6 +31,7 @@ public class EndConditions : MonoBehaviour
     public LevelManager levelManager;
     public TextMeshProUGUI txtRemainingItems;
     public SoundManager soundManager;
+    public RectTransform transitionPanel;
 
     [Header("Prefabs")]
     public GameObject ptcRedPrefab;
@@ -163,6 +164,8 @@ public class EndConditions : MonoBehaviour
         GameObject ptcEndLevel;
         ptcEndLevel = Instantiate(ptcEndLevelPrefab, new Vector2(0f, 0f), Quaternion.identity);
         Destroy(ptcEndLevel, 5f);
+
+        soundManager.playAudioClip(16);
 
         yield return new WaitForSeconds(4f);
 
@@ -374,7 +377,7 @@ public class EndConditions : MonoBehaviour
 
         soundManager.playAudioClip(5);
 
-        SceneManager.LoadScene("MenuSelectionLevels", LoadSceneMode.Single);
+        StartCoroutine(ShowTransitionPanel());
     }
 
     IEnumerator FillAnim(int _width)
@@ -473,5 +476,49 @@ public class EndConditions : MonoBehaviour
 
             txtScore.fontSize--;
         }
+    }
+
+    IEnumerator ShowTransitionPanel()
+    {
+        transitionPanel.gameObject.SetActive(true);
+
+        while (transitionPanel.localScale.x < 24)
+        {
+            transitionPanel.localScale = new Vector2(transitionPanel.localScale.x + 1, transitionPanel.localScale.y + 1);
+
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        transitionPanel.GetChild(1).gameObject.SetActive(true);
+        transitionPanel.GetChild(2).gameObject.SetActive(true);
+
+        int count = 0;
+        float speed = 1;
+
+        while (count < 140)
+        {
+            for (int i = 0; i < transitionPanel.GetChild(1).childCount; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    speed = 1;
+                }
+                else
+                {
+                    speed = 1.4f;
+                }
+
+                transitionPanel.GetChild(1).GetChild(i).localPosition = new Vector3(transitionPanel.GetChild(1).GetChild(i).localPosition.x, transitionPanel.GetChild(1).GetChild(i).localPosition.y - speed, 0f);
+                transitionPanel.GetChild(2).GetChild(i).localPosition = new Vector3(transitionPanel.GetChild(2).GetChild(i).localPosition.x, transitionPanel.GetChild(2).GetChild(i).localPosition.y + speed, 0f);
+            }
+
+            yield return new WaitForSeconds(0.01f);
+
+            count++;
+        }
+
+        yield return new WaitForSeconds(0.4f);
+
+        SceneManager.LoadScene("MenuSelectionLevels", LoadSceneMode.Single);
     }
 }
