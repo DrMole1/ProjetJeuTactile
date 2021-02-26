@@ -11,6 +11,7 @@ TagManager:
   - Orange
   - Supra
   - White
+  - Reglisse
   layers:
   - Default
   - TransparentFX
@@ -28,8 +29,8 @@ TagManager:
   - BerlingotExplosif
   - PackedCandy
   - ZonePackedCandy
-  - 
-  - 
+  - Reglisse
+  - NoReglisse
   - 
   - 
   - 

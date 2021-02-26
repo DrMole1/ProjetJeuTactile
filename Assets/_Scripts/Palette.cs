@@ -128,7 +128,7 @@ public class Palette : MonoBehaviour
         {
             transform.GetChild(k).gameObject.SetActive(true);
 
-            if(transform.GetChild(k).gameObject.layer == 7 || transform.GetChild(k).gameObject.layer == 14)
+            if(transform.GetChild(k).gameObject.layer == 7 || transform.GetChild(k).gameObject.layer == 14 || transform.GetChild(k).gameObject.layer == 16)
                 StartCoroutine(GrowCandy(transform.GetChild(k)));
             if (transform.GetChild(k).gameObject.layer == 13)
                 StartCoroutine(GrowCandyExplosive(transform.GetChild(k)));
@@ -141,14 +141,14 @@ public class Palette : MonoBehaviour
     {
         while(tr.localScale.x < 0.1f)
         {
-            tr.localScale = new Vector3(tr.localScale.x + 0.0045f, tr.localScale.y + 0.0045f, 1f);
+            tr.localScale = new Vector3(tr.localScale.x + 0.006f, tr.localScale.y + 0.006f, 1f);
 
             yield return new WaitForSeconds(0.1f);
         }
 
         while (tr.localScale.x > 0.092f)
         {
-            tr.localScale = new Vector3(tr.localScale.x - 0.0045f, tr.localScale.y - 0.0045f, 1f);
+            tr.localScale = new Vector3(tr.localScale.x - 0.006f, tr.localScale.y - 0.006f, 1f);
 
             yield return new WaitForSeconds(0.1f);
         }
